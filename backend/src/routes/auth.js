@@ -33,6 +33,8 @@ router.post('/register', [
     const userRole = allowedRoles.includes(role) ? role : 'customer';
     const hashedPassword = await bcrypt.hash(password, 12);
 
+    console.log(`${name}, ${email}, ${password}, ${phone}, ${campus}, ${shopScope}, ${region}, ${role}`)
+
     const user = await prisma.user.create({
       data: {
         name, email,
