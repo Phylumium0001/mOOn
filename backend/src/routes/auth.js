@@ -20,10 +20,17 @@ router.post('/register', [
   body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
   body('campus').notEmpty().withMessage('Campus is required')
 ], async (req, res) => {
+  
   const errors = validationResult(req);
+  console.log('Validation errors:', errors.array());
   if (!errors.isEmpty()) return res.status(400).json({ success: false, errors: errors.array() });
 
   const { name, email, password, phone, campus, shopScope, region, role } = req.body;
+  console.log('Registering user:', { name, email, campus, shopScope, region, role });
+
+  const fixCampus = (campus) => {
+    return campus.replaceAll(" ", '_').replace(",", '');
+  };
 
   try {
     const existing = await prisma.user.findUnique({ where: { email } });
@@ -33,14 +40,12 @@ router.post('/register', [
     const userRole = allowedRoles.includes(role) ? role : 'customer';
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    console.log(`${name}, ${email}, ${password}, ${phone}, ${campus}, ${shopScope}, ${region}, ${role}`)
-
     const user = await prisma.user.create({
       data: {
         name, email,
         password: hashedPassword,
         phone,
-        campus,
+        campus: fixCampus(campus),
         shopScope: shopScope || 'campus',
         region,
         role: userRole

@@ -165,7 +165,7 @@ export default function StorePage() {
             {/* Actions */}
             <div className="flex items-center gap-3">
               {user ? (
-                <button onClick={() => navigate(user.role === 'vendor' ? '/vendor' : user.role === 'admin' ? '/admin' : '/orders')}
+                <button onClick={() => navigate(user.role === 'vendor' ? '/vendor' : user.role === 'admin' ? '/admin' : '/profile')}
                   className="text-sm font-medium text-gray-700 hover:text-[#2E8B57]">
                   👤 {user.name.split(' ')[0]}
                 </button>

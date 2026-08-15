@@ -8,6 +8,7 @@ import StorePage from './pages/StorePage';
 import AuthPage from './pages/AuthPage';
 import VendorPage from './pages/VendorPage';
 import AdminPage from './pages/AdminPage';
+import ProfilePage from "./pages/ProfilePage"
 
 function ProtectedRoute({ children, roles }) {
   const { user, loading } = useAuth();
@@ -28,6 +29,11 @@ export default function App() {
             <Route path="/shop" element={<StorePage />} />
             <Route path="/login" element={<AuthPage mode="login" />} />
             <Route path="/register" element={<AuthPage mode="register" />} />
+            <Route path="/profile" element={
+              <ProtectedRoute roles={['customer']}>
+                <ProfilePage />
+              </ProtectedRoute>
+            } />
             <Route path="/vendor" element={
               <ProtectedRoute roles={['vendor']}>
                 <VendorPage />

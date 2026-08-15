@@ -13,16 +13,6 @@ export const CAMPUSES = [
   'University of Health and Allied Sciences'
 ];
 
-// export const CAMPUSES = [
-//   { value: "University_of_Ghana_Legon", label: "University of Ghana, Legon" },
-//   { value: "KNUST_Kumasi", label: "KNUST, Kumasi" },
-//   { value: "University_of_Cape_Coast", label: "University of Cape Coast" },
-//   { value: "University_of_Professional_Studies", label: "University of Professional Studies" },
-//   { value: "University_of_Energy_and_Natural_Resources", label: "University of Energy and Natural Resources" },
-//   { value: "Ghana_Institute_of_Management_and_Public_Administration", label: "Ghana Institute of Management and Public Administration" },
-//   { value: "University_of_Health_and_Allied_Sciences", label: "University of Health and Allied Sciences" }
-// ];
-
 export const REGIONS = [
   'Greater Accra', 'Ashanti', 'Western', 'Central', 'Eastern',
   'Volta', 'Northern', 'Upper East', 'Upper West', 'Brong-Ahafo',

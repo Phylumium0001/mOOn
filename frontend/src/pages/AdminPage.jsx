@@ -170,13 +170,14 @@ export default function AdminPage() {
                   <h3 className="font-semibold mb-3 text-yellow-800">⏳ Shops Pending Verification ({pendingShops.length})</h3>
                   <div className="space-y-2">
                     {pendingShops.map(shop => (
-                      <div key={shop._id} className="bg-white rounded-lg p-3 flex items-center justify-between border">
+                      <div key={shop.id} className="bg-white rounded-lg p-3 flex items-center justify-between border">
+                        {console.log(shop)}
                         <div>
                           <p className="font-semibold text-sm">{shop.name}</p>
                           <p className="text-xs text-gray-500">{shop.campus} · {shop.category} · {shop.scope}</p>
                           <p className="text-xs text-gray-400">Owner: {shop.owner?.name} ({shop.owner?.email})</p>
                         </div>
-                        <button onClick={() => handleVerifyShop(shop._id, true)}
+                        <button onClick={() => handleVerifyShop(shop.id, true)}
                           className="bg-[#2E8B57] text-white text-xs px-3 py-1.5 rounded-lg hover:bg-[#267a4d]">
                           Verify ✓
                         </button>

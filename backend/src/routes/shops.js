@@ -2,6 +2,11 @@ const router = require('express').Router();
 const prisma = require('../prismaClient');
 const { protect, requireRole } = require('../middleware/auth');
 
+// Custom function to fix campus formatting (replace spaces with underscores and remove commas)
+const fixCampus = (campus) => {
+  return campus.replaceAll(" ", '_').replace(",", '');
+};
+
 // Build Prisma WHERE filter for the campus/scope preference
 const buildScopeFilter = ({ scope, campus, region }) => {
   if (scope === 'nationwide') {
@@ -86,13 +91,13 @@ router.post('/', protect, requireRole('vendor', 'admin'), async (req, res) => {
       name, description, category, scope, campus, region,
       contactPhone, contactEmail, deliveryFee, minOrderAmount, estimatedDeliveryTime
     } = req.body;
-
+    
     const shop = await prisma.shop.create({
       data: {
         ownerId: req.user.id,
         name, description, category,
         scope: scope || 'campus',
-        campus: campus || req.user.campus,
+        campus: fixCampus(campus) || req.user.campus,
         region, contactPhone, contactEmail,
         deliveryFee: parseFloat(deliveryFee) || 0,
         minOrderAmount: parseFloat(minOrderAmount) || 0,

@@ -14,14 +14,8 @@ export default function AuthPage({ mode = 'login' }) {
     campus: CAMPUSES[0], shopScope: 'campus', role: 'customer'
   });
 
-  // Fixing Fronten and Backend Campuses Mixmatch
-  function fixCampus(campus) {
-    const val = campus.replace(",", "").replaceAll(" ", "_")
-    console.log(val)
-    return val
-  }
-
   const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -104,13 +98,13 @@ export default function AuthPage({ mode = 'login' }) {
                 <label className="block text-sm font-medium text-gray-700 mb-1">Your Campus</label>
                 <select name="campus" value={form.campus} onChange={handleChange} required
                   className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2E8B57]">
-                  {CAMPUSES.map(c => <option key={c} value={fixCampus(c)}>{fixCampus(c)}</option>)}
+                  {CAMPUSES.map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
 
-                {/*   <select name="campus" value={form.campus} onChange={handleChange} required */}
-                {/*     className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2E8B57]"> */}
-                {/*     {CAMPUSES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)} */}
-                {/*   </select> */}
+                  {/* <select name="campus" value={form.campus} onChange={handleChange} required
+                     className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2E8B57]">
+                     {CAMPUSES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)} 
+                   </select>  */}
               </div>
 
               <div>
