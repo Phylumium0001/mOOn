@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: process.env.REACT_APP_API_URL || '/api',
   headers: { 'Content-Type': 'application/json' }
 });
 
@@ -60,3 +60,4 @@ export const verifyShop = (id, isVerified) => api.patch(`/admin/shops/${id}/veri
 export const deleteUser = (id) => api.delete(`/admin/users/${id}`);
 
 export default api;
+

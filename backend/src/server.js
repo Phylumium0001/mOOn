@@ -7,10 +7,15 @@ const prisma = require('./prismaClient');
 const app = express();
 
 // ── Middleware ────────────────────────────────────────────────────────────────
+const allowedOrigins = process.env.FRONTEND_URL
+  ? [process.env.FRONTEND_URL, 'http://localhost:3000']
+  : ['http://localhost:3000'];
+ 
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? 'https://moon.com' : 'http://localhost:3000',
+  origin: allowedOrigins,
   credentials: true
 }));
+
 app.use(express.json());
 app.use(morgan('dev'));
 
