@@ -307,7 +307,7 @@ function ProductModal({ product, onClose, onSaved }) {
   const handleSave = async () => {
     try {
       const res = product
-        ? await updateProduct(product._id, form)
+        ? await updateProduct(product.id, form)
         : await createProduct(form);
       onSaved(res.data.product);
       toast.success(product ? 'Product updated!' : 'Product created!');
