@@ -204,7 +204,7 @@ export default function StorePage() {
       </header>
 
       {/* Hero */}
-      <section className="bg-gradient-to-r from-[#2E8B57] to-[#3DA56B] text-white py-14">
+      {/* <section className="bg-gradient-to-r from-[#2E8B57] to-[#3DA56B] text-white py-14">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Everything Campus.<br />One Store.
@@ -227,7 +227,7 @@ export default function StorePage() {
           </div>
         </div>
       </section>
-
+*/}
       {/* Products */}
       <main className="max-w-7xl mx-auto px-4 py-10">
         <div className="flex items-center justify-between mb-6">
