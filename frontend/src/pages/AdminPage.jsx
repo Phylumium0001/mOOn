@@ -197,7 +197,7 @@ export default function AdminPage() {
                 <span className="text-sm text-yellow-600 font-medium">· {pendingShops.length} pending</span>
               </div>
               {shops.map(shop => (
-                <div key={shop._id} className="bg-white rounded-xl shadow-sm border p-4">
+                <div key={shop.id} className="bg-white rounded-xl shadow-sm border p-4">
                   <div className="flex items-start justify-between">
                     <div>
                       <div className="flex items-center gap-2">
@@ -213,7 +213,7 @@ export default function AdminPage() {
                       <p className="text-xs text-gray-400">Owner: {shop.owner?.name} · {shop.owner?.email}</p>
                     </div>
                     <button
-                      onClick={() => handleVerifyShop(shop._id, !shop.isVerified)}
+                      onClick={() => handleVerifyShop(shop.id, !shop.isVerified)}
                       className={`text-xs px-3 py-1.5 rounded-lg font-medium ${
                         shop.isVerified
                           ? 'border border-red-300 text-red-500 hover:bg-red-50'
